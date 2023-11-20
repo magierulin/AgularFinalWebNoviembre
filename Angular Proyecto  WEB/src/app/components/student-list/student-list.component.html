@@ -1,0 +1,55 @@
+<table class="table table-striped">
+    <thead class="thead bg-primary text-white">
+        <tr>
+            <th>Id</th>
+            <th>Dni</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Email</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of studentList">
+            <td>{{ student.id }}</td>
+            <td>{{ student.dni }}</td>
+            <td>{{ student.lastName }}</td>
+            <td>{{ student.firstName }}</td>
+            <td>{{ student.email }}</td>
+            <td><button class="btn btn-success btn-sm" (click)="view(ver, student)">View</button></td>
+            <td><button class="btn btn-danger btn-sm" (click)="delete(student.id)">Delete</button></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td><input class="form-control" [(ngModel)]="dni"></td>
+            <td><input class="form-control" [(ngModel)]="lastName"></td>
+            <td><input class="form-control" [(ngModel)]="firstName"></td>
+            <td><input class="form-control" [(ngModel)]="email"></td>
+            <td colspan="2" style="text-align: center"><button class="btn btn-primary btn-sm" (click)="save()">Add</button></td>
+        </tr>
+    </tfoot>
+</table>
+
+<ng-template #ver let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">View Student</h5>
+        <button class="close" aria-label="Close" (click)="modal.dismiss()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+        <label>Id:</label>
+        <input class="form-control" [(ngModel)]="id2" readonly>
+        <label>DNI:</label>
+        <input class="form-control" [(ngModel)]="dni2" ngbAutofocus>
+        <label>Last Name:</label>
+        <input class="form-control" [(ngModel)]="lastName2">
+        <label>First Name:</label>
+        <input class="form-control" [(ngModel)]="firstName2">
+        <label>Email:</label>
+        <input class="form-control" [(ngModel)]="email2">
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" (click)="modal.close()">Guardar</button>
+    </div>
+</ng-template>
